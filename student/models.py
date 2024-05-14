@@ -23,3 +23,21 @@ class Student(models.Model):
 
     def __str__(self):
         return self.name
+#=============================
+
+class Category(models.Model):
+    name=models.CharField(max_length=100)
+    data=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+
+class Product(models.Model):
+    name=models.CharField(max_length=100)
+    price=models.PositiveIntegerField()
+    Category=models.ForeignKey(Category,on_delete=models.CASCADE, related_name='products')
+    data=models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
+

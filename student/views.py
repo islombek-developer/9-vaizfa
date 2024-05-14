@@ -1,9 +1,10 @@
 from django.shortcuts import render,redirect,get_list_or_404
-from .models import Group,Teacher,Student
+from .models import Group,Teacher,Student,Product,Category
 from .forms import CreatStudent
 
 def home(request):
-    return render(request,'home.html')
+    home=Category.objects.all()
+    return render(request,'home.html',context={'home':home})
 
 
 def group(request):
@@ -45,3 +46,7 @@ def delete(request,id):
     student.delete()
     return redirect('/')
 
+def products(request,p_id):
+    pro=Category.objects.get(id=p_id)
+    products=pro.products.all()
+    return render(request,'products.html',context={'products':products})

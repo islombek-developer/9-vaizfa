@@ -3,8 +3,25 @@
 {% block content %}
 <div class="container">
   <h1 style="text-align: center;">home</h1>
-  <a href="{% url 'group' %}" class="btn btn-primary" >group</a>
+  <a href="{% url 'group' %}" class="btn btn-outline-primary" >Najot nalim</a>
 </div>
-
+<table class="table table-info">
+  <thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">name</th>
+      <th scope="col">data</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in home %}
+    <tr>
+      <th scope="row">{{i.id}}</th>
+      <td><a href="{% url 'products' i.id %}">{{i.name}}</a></td>
+      <td>{{i.data}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
 {% endblock content %}
