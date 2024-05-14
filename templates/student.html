@@ -29,7 +29,10 @@
         <td>{{i.group}}</td>
          <td><a class="btn btn-danger" href="{% url 'delete' i.id %}">
           <i class="fas fa-trash-alt"></i> Delete
-      </a></td>
+      </a>
+      <a class="btn btn-primary" href="{% url 'update' i.id %}">
+        <i class="fas fa-edit"></i> Edit
+    </a></td>
       </tr>
     </tbody>
     {% endfor %}

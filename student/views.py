@@ -30,6 +30,16 @@ def create(request):
             return redirect('/')
     return render(request, 'create.html', context={"form": form})
 
+def update(request, id):
+    student = Student.objects.get(id=id)
+    form = CreatStudent(instance=student)
+    if request.method == 'POST':
+        form = CreatStudent(request.POST, instance=student)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    return render(request, 'create.html', context={"form": form})
+
 def delete(request,id):
     student=Student.objects.get(id=id)
     student.delete()
