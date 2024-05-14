@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1 style="text-align: center;">Student</h1>
+  <a href="{% url 'group' %}" class="btn btn-primary" >group</a>
+    <a style="text-align: center;" href="{% url 'create' %}" class="btn btn-outline-info" ><i class="fa-regular fa-square-plus"></i></a>
+
+  </div>
+
+<table class="table table-info">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">name</th>
+        <th scope="col">age</th>
+        <th scope="col">teacher</th>
+        <th scope="col">group</th>
+        <th scope="col">Buttons</th>
+      </tr>
+    </thead>
+    {% for i in stu %}
+    <tbody>
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td>{{i.name}}</td>
+        <td>{{i.age}}</td>
+        <td>{{i.teacher}}</td>
+        <td>{{i.group}}</td>
+         <td><a class="btn btn-danger" href="{% url 'delete' i.id %}">
+          <i class="fas fa-trash-alt"></i> Delete
+      </a></td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+{% endblock content %}

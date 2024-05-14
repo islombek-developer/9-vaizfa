@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1 style="text-align: center;">teacher</h1>
+  <a href="{% url 'group' %}" class="btn btn-primary" >group</a>
+
+</div>
+
+<table class="table table-info">
+    <thead>
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">name</th>
+        <th scope="col">group</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for i in tea %}
+      <tr>
+        <th scope="row">{{i.id}}</th>
+        <td>{{i.name}}</td>
+        <td><a href="{% url 'student' i.id %}">{{i.group}}</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}
